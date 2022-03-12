@@ -1,7 +1,5 @@
 package com.example.testingtool;
 
-import java.lang.reflect.InvocationTargetException;
-
 public abstract class TestCase {
     protected final String name;
 
@@ -9,7 +7,7 @@ public abstract class TestCase {
         this.name = name;
     }
 
-    public void run(Class<? extends TestCase> testCase) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void run(Class<? extends TestCase> testCase) throws Exception {
         testCase.getDeclaredMethod(name).invoke(this);
     }
 }
