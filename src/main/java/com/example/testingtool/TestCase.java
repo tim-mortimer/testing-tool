@@ -13,4 +13,13 @@ public abstract class TestCase {
         this.setUp();
         testCase.getDeclaredMethod(name).invoke(this);
     }
+
+    protected static void assertTrue(boolean assertion) {
+        if (!assertion) {
+            throw new AssertionFailedException();
+        }
+    }
+
+    private static class AssertionFailedException extends RuntimeException {
+    }
 }

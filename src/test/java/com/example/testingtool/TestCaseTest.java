@@ -14,12 +14,12 @@ public class TestCaseTest extends TestCase {
 
     public void testRunning() throws Exception {
         test.run(WasRun.class);
-        if (!test.wasRun) throw new Exception();
+        assertTrue(test.wasRun);
     }
 
     public void testSetUp() throws Exception {
         test.run(WasRun.class);
-        if (!test.wasSetUp) throw new Exception();
+        assertTrue(test.wasSetUp);
     }
 
     public static void main(String[] args) throws Exception {
