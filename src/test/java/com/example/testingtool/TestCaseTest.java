@@ -14,7 +14,6 @@ public class TestCaseTest extends TestCase {
     }
 
     public static void main(String[] args) throws Exception {
-        var testCaseTest = new TestCaseTest("testRunning");
-        testCaseTest.run(TestCaseTest.class);
+        (new TestCaseTest("testRunning")).run(TestCaseTest.class);
     }
 }
