@@ -9,7 +9,7 @@ public abstract class TestCase {
         this.name = name;
     }
 
-    public void run() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        WasRun.class.getDeclaredMethod(name).invoke(this);
+    public void run(Class<? extends TestCase> testCase) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        testCase.getDeclaredMethod(name).invoke(this);
     }
 }
