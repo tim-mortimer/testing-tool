@@ -2,12 +2,11 @@ package com.example.testingtool;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class WasRun {
+public class WasRun extends TestCase {
     public boolean wasRun;
-    private final String name;
 
     public WasRun(String name) {
-        this.name = name;
+        super(name);
     }
 
     public void testMethod() {
