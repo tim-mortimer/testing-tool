@@ -8,7 +8,6 @@ public class TestCaseTest extends TestCase {
 
     public void testRunning() throws Exception {
         var test = new WasRun("testMethod");
-        if (test.wasRun) throw new Exception();
         test.run(WasRun.class);
         if (!test.wasRun) throw new Exception();
     }
