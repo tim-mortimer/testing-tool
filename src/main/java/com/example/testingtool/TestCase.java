@@ -1,5 +1,7 @@
 package com.example.testingtool;
 
+import java.lang.reflect.InvocationTargetException;
+
 public abstract class TestCase {
     protected final String name;
 
@@ -9,9 +11,13 @@ public abstract class TestCase {
 
     protected void setUp() {}
 
-    public void run(Class<? extends TestCase> testCase) throws Exception {
+    public void run(Class<? extends TestCase> testCase) {
         this.setUp();
-        testCase.getDeclaredMethod(name).invoke(this);
+        try {
+            testCase.getDeclaredMethod(name).invoke(this);
+        } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+            throw new TestExecutionException(e);
+        }
     }
 
     protected static void assertTrue(boolean assertion) {
@@ -21,5 +27,11 @@ public abstract class TestCase {
     }
 
     private static class AssertionFailedException extends RuntimeException {
+    }
+
+    private static class TestExecutionException extends RuntimeException {
+        public TestExecutionException(ReflectiveOperationException e) {
+            super(e);
+        }
     }
 }

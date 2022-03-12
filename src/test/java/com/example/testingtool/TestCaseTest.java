@@ -12,17 +12,17 @@ public class TestCaseTest extends TestCase {
         test = new WasRun("testMethod");
     }
 
-    public void testRunning() throws Exception {
+    public void testRunning() {
         test.run(WasRun.class);
         assertTrue(test.wasRun);
     }
 
-    public void testSetUp() throws Exception {
+    public void testSetUp() {
         test.run(WasRun.class);
         assertTrue(test.wasSetUp);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         (new TestCaseTest("testRunning")).run(TestCaseTest.class);
         (new TestCaseTest("testSetUp")).run(TestCaseTest.class);
     }
