@@ -1,15 +1,15 @@
 package com.example.testingtool;
 
 public class WasRun extends TestCase {
-    public boolean wasSetUp;
     public boolean wasRun;
+    public String log;
 
     public WasRun(String name) {
         super(name);
     }
 
     protected void setUp() {
-        this.wasSetUp = true;
+        this.log = "setUp ";
     }
 
     public void testMethod() {

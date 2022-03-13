@@ -19,7 +19,7 @@ public class TestCaseTest extends TestCase {
 
     public void testSetUp() {
         test.run(WasRun.class);
-        assertTrue(test.wasSetUp);
+        assertTrue(test.log.equals("setUp "));
     }
 
     public static void main(String[] args) {
