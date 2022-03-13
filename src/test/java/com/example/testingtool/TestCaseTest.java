@@ -1,5 +1,8 @@
 package com.example.testingtool;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
 public class TestCaseTest extends TestCase {
     private TestResult result;
 
@@ -45,11 +48,12 @@ public class TestCaseTest extends TestCase {
 
     public static void main(String[] args) {
         var suite = new TestSuite();
-        suite.add(new TestCaseTest("testTemplateMethod"));
-        suite.add(new TestCaseTest("testResult"));
-        suite.add(new TestCaseTest("testFailedResult"));
-        suite.add(new TestCaseTest("testFailedResultFormatting"));
-        suite.add(new TestCaseTest("testSuite"));
+        Arrays.stream(TestCaseTest.class.getMethods())
+                .filter(method -> method.getDeclaringClass().equals(TestCaseTest.class))
+                .map(Method::getName)
+                .filter(methodName -> !methodName.equals("main"))
+                .map(TestCaseTest::new)
+                .forEach(suite::add);
         var result = new TestResult();
         suite.run(result);
         System.out.println(result.summary());
