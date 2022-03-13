@@ -1,32 +1,35 @@
 package com.example.testingtool;
 
 public class TestCaseTest extends TestCase {
+    private TestResult result;
+
     public TestCaseTest(String name) {
         super(name);
     }
 
+    protected void setUp() {
+        this.result = new TestResult();
+    }
+
     public void testTemplateMethod() {
         var test = new WasRun("testMethod");
-        test.run(WasRun.class, new TestResult());
+        test.run(WasRun.class, result);
         assertTrue(test.log().equals("setUp testMethod tearDown "));
     }
 
     public void testResult() {
         var test = new WasRun("testMethod");
-        var result = new TestResult();
         test.run(WasRun.class, result);
         assertTrue("1 run, 0 failed".equals(result.summary()));
     }
 
     public void testFailedResult() {
         var test = new WasRun("testBrokenMethod");
-        var result = new TestResult();
         test.run(WasRun.class, result);
         assertTrue("1 run, 1 failed".equals(result.summary()));
     }
 
     public void testFailedResultFormatting() {
-        var result = new TestResult();
         result.testStarted();
         result.testFailed();
         assertTrue("1 run, 1 failed".equals(result.summary()));
@@ -36,7 +39,6 @@ public class TestCaseTest extends TestCase {
         var suite = new TestSuite();
         suite.add(new WasRun("testMethod"));
         suite.add(new WasRun("testBrokenMethod"));
-        var result = new TestResult();
         suite.run(result);
         assertTrue("2 run, 1 failed".equals(result.summary()));
     }
