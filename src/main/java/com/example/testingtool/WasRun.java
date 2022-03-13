@@ -12,7 +12,7 @@ public class WasRun extends TestCase {
     }
 
     public void testMethod() {
-        this.log = this.getLog() + "testMethod ";
+        this.log = this.log() + "testMethod ";
     }
 
     public void testBrokenMethod() {
@@ -20,10 +20,10 @@ public class WasRun extends TestCase {
     }
 
     protected void tearDown() {
-        this.log = this.getLog() + "tearDown ";
+        this.log = this.log() + "tearDown ";
     }
 
-    public String getLog() {
+    public String log() {
         return log;
     }
 }

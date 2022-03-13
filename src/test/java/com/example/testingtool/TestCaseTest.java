@@ -8,7 +8,7 @@ public class TestCaseTest extends TestCase {
     public void testTemplateMethod() {
         var test = new WasRun("testMethod");
         test.run(WasRun.class, new TestResult());
-        assertTrue(test.getLog().equals("setUp testMethod tearDown "));
+        assertTrue(test.log().equals("setUp testMethod tearDown "));
     }
 
     public void testResult() {
