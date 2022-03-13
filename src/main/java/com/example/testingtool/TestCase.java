@@ -18,7 +18,10 @@ public abstract class TestCase {
         } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
             throw new TestExecutionException(e);
         }
+        this.tearDown();
     }
+
+    protected void tearDown() {}
 
     protected static void assertTrue(boolean assertion) {
         if (!assertion) {

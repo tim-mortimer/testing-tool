@@ -14,4 +14,8 @@ public class WasRun extends TestCase {
     public void testMethod() {
         this.log += "testMethod ";
     }
+
+    protected void tearDown() {
+        this.log += "tearDown ";
+    }
 }
