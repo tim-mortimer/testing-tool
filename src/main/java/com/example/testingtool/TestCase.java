@@ -11,7 +11,7 @@ public abstract class TestCase {
 
     protected void setUp() {}
 
-    public void run(Class<? extends TestCase> testCase) {
+    public TestResult run(Class<? extends TestCase> testCase) {
         this.setUp();
         try {
             testCase.getDeclaredMethod(name).invoke(this);
@@ -19,6 +19,7 @@ public abstract class TestCase {
             throw new TestExecutionException(e);
         }
         this.tearDown();
+        return new TestResult();
     }
 
     protected void tearDown() {}
