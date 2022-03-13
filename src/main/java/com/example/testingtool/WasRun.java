@@ -1,7 +1,7 @@
 package com.example.testingtool;
 
 public class WasRun extends TestCase {
-    public String log;
+    private String log;
 
     public WasRun(String name) {
         super(name);
@@ -12,10 +12,14 @@ public class WasRun extends TestCase {
     }
 
     public void testMethod() {
-        this.log += "testMethod ";
+        this.log = this.getLog() + "testMethod ";
     }
 
     protected void tearDown() {
-        this.log += "tearDown ";
+        this.log = this.getLog() + "tearDown ";
+    }
+
+    public String getLog() {
+        return log;
     }
 }
