@@ -1,7 +1,6 @@
 package com.example.testingtool;
 
 public class WasRun extends TestCase {
-    public boolean wasRun;
     public String log;
 
     public WasRun(String name) {
@@ -13,6 +12,6 @@ public class WasRun extends TestCase {
     }
 
     public void testMethod() {
-        wasRun = true;
+        this.log += "testMethod ";
     }
 }

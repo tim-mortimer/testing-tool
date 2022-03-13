@@ -12,18 +12,12 @@ public class TestCaseTest extends TestCase {
         test = new WasRun("testMethod");
     }
 
-    public void testRunning() {
+    public void testTemplateMethod() {
         test.run(WasRun.class);
-        assertTrue(test.wasRun);
-    }
-
-    public void testSetUp() {
-        test.run(WasRun.class);
-        assertTrue(test.log.equals("setUp "));
+        assertTrue(test.log.equals("setUp testMethod "));
     }
 
     public static void main(String[] args) {
-        (new TestCaseTest("testRunning")).run(TestCaseTest.class);
-        (new TestCaseTest("testSetUp")).run(TestCaseTest.class);
+        (new TestCaseTest("testTemplateMethod")).run(TestCaseTest.class);
     }
 }
