@@ -15,6 +15,10 @@ public class WasRun extends TestCase {
         this.log = this.getLog() + "testMethod ";
     }
 
+    public void testBrokenMethod() {
+        throw new RuntimeException();
+    }
+
     protected void tearDown() {
         this.log = this.getLog() + "tearDown ";
     }

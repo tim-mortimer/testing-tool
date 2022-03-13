@@ -17,8 +17,10 @@ public abstract class TestCase {
         this.setUp();
         try {
             testCase.getDeclaredMethod(name).invoke(this);
-        } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+        } catch (IllegalAccessException | NoSuchMethodException e) {
             throw new TestExecutionException(e);
+        } catch (Exception e) {
+            testResult.testFailed();
         }
         this.tearDown();
         return testResult;
