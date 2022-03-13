@@ -11,19 +11,17 @@ public abstract class TestCase {
 
     protected void setUp() {}
 
-    public TestResult run(Class<? extends TestCase> testCase) {
-        var testResult = new TestResult();
-        testResult.testStarted();
+    public void run(Class<? extends TestCase> testCase, TestResult result) {
+        result.testStarted();
         this.setUp();
         try {
             testCase.getDeclaredMethod(name).invoke(this);
         } catch (IllegalAccessException | NoSuchMethodException e) {
             throw new TestExecutionException(e);
         } catch (Exception e) {
-            testResult.testFailed();
+            result.testFailed();
         }
         this.tearDown();
-        return testResult;
     }
 
     protected void tearDown() {}
